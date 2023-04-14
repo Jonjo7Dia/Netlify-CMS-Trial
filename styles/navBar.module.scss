@@ -2,17 +2,18 @@
 
 .navBar{
     width: 100%;
-    padding-left: rem(20px);
-    padding-right: rem(20px);
+    padding-left: rem(40px);
+    padding-right: rem(40px);
     background-color: $color-black;
-    padding-top: rem(20px);
-    padding-bottom: rem(20px);
+    padding-top: rem(8px);
+    padding-bottom: rem(8px);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    &--logo{
-        height: 100%;
+    position: fixed;
+    top: 0;
+    
+    &__logo{
         width: auto;
         display: flex;
         justify-content: center;
@@ -25,7 +26,44 @@
             text-decoration: none;
         }
     }
+    
+    &__menu-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: rem(40px);
 
+    }
+
+    &__menu-item {
+        color: $color-white;
+        text-decoration: none;
+        font-size: rem(20px);
+        font-family: 'Mulish';
+        transition: color 0.1s ease-in;
+
+        &:hover{
+            color: $color-blue;
+        }
+
+        &--button {
+            border: solid rem(1px) $color-white;
+            padding-left: rem(15px);
+            padding-right: rem(15px);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: rem(20px);
+            transition: color background-color 0.2s ease-in;
+
+            &:hover{
+                color: $color-black;
+                background-color: $color-blue;
+                border-color: $color-blue;
+            }
+
+        }
+    }
 
 
 }
