@@ -1,74 +1,91 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: main # Branch to update (optional; defaults to master)
 media_folder: "static/images/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - { label: "Header", name: "header", widget: "string" }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "SubHeader", name: "subHeader", widget: "string" }
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
     folder: "content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    format: 'frontmatter'
+    format: "frontmatter"
     sort: "date:desc" # Default is title:asc
     fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime", format: "dddd MMMM Do, YYYY"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
-  - label: 'Puppies'
-    name: 'puppies'
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          format: "dddd MMMM Do, YYYY",
+        }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Puppies"
+    name: "puppies"
     folder: "content/puppies" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    format: 'json'
+    format: "json"
     fields:
-      - {label: Date, name: description, widget: date, required: false}
+      - { label: Date, name: description, widget: date, required: false }
       - label: Photos
         name: Photos
         widget: list
-        fields: 
-          - {label: Image, name: image, widget: image, required: true}
-  - label: 'Our Dogs'
-    name: 'our_dogs'
+        fields:
+          - { label: Image, name: image, widget: image, required: true }
+  - label: "Our Dogs"
+    name: "our_dogs"
     folder: "content/Our Dogs" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    format: 'json'
+    format: "json"
     fields:
-      - {label: Name, name: name, widget: string, required: true}
+      - { label: Name, name: name, widget: string, required: true }
       - label: Photos
         name: Photos
         widget: list
-        fields: 
-          - {label: Image, name: image, widget: image, required: true}
+        fields:
+          - { label: Image, name: image, widget: image, required: true }
   - label: "About"
     name: "about"
     files:
-    - label: "About Me"
-      name: "about_me"
-      format: 'json'
-      file: "content/about/about_me.json"
-      fields:
-        - {label: Title, name: title, widget: string}
-        - {label: Description, name: description, widget: string}
-        - {label: Image, name: siteicon, widget: image, required: true}
-    - label: "Our Home"
-      name: "our_home"
-      format: "json"
-      file: "content/about/our_home.json"
-      fields: 
-        - {label: Title, name: title, widget: string}
-        - {label: Description, name: description, widget: string}
-        - {label: Image, name: siteicon, widget: image, required: true}
+      - label: "About Me"
+        name: "about_me"
+        format: "json"
+        file: "content/about/about_me.json"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Description, name: description, widget: string }
+          - { label: Image, name: siteicon, widget: image, required: true }
+      - label: "Our Home"
+        name: "our_home"
+        format: "json"
+        file: "content/about/our_home.json"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Description, name: description, widget: string }
+          - { label: Image, name: siteicon, widget: image, required: true }
   - label: "Contact"
     name: "contact"
     folder: "content/Contact.json"
     create: true
     fields:
-      - {label: Address, name: address, widget: string}
-      - {label: Phone, name: phone, widget: string}
-      - {label: Map, name: map, widget: map}
-
-    
-    
+      - { label: Address, name: address, widget: string }
+      - { label: Phone, name: phone, widget: string }
+      - { label: Map, name: map, widget: map }
